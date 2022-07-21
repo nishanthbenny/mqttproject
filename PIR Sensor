@@ -1,0 +1,37 @@
+// C++ code
+// PIR Sensor
+int relay = 13;
+int pin = 4;
+
+int value =0;
+int PIRstate = LOW;
+
+void setup()
+{
+  pinMode (relay, OUTPUT);
+  pinMode (pin, INPUT);
+  Serial.begin(9600);
+ 
+}
+
+
+void loop()
+{
+  value = digitalRead(pin);
+  if(value == HIGH)
+  {
+    digitalWrite(relay, HIGH);
+    if (PIRstate == LOW)
+    {
+      Serial.println("Motion Detected");
+    }
+  }
+  if(value == LOW)
+  {
+    digitalWrite(relay, LOW);
+    if(PIRstate == HIGH)
+    {
+      Serial.println("0");
+    }
+  }
+}
